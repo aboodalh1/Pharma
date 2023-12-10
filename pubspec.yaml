@@ -53,6 +53,7 @@ dev_dependencies:
   carousel_slider: ^4.2.1
   hexcolor: ^3.0.1
   http: ^1.1.2
+  fluttertoast: ^8.1.2
 #  fluttertoast: ^8.2.2
 
 # For information on the generic Dart part of this file, see the
