@@ -10,15 +10,23 @@ import '../Network/Local/cacheHelper.dart';
 
 class HomeController extends GetxController {
   bool Gg = true;
+  bool Gg1 = true;
   int count = 0;
   bool checkBox = false;
 
   int navBarIndex = 0;
   Icon secureOrNot = Icon(Icons.remove_red_eye);
+  Icon secureOrNot1 = Icon(Icons.remove_red_eye);
+
 
   void isSecure() {
     Gg = !Gg;
     secureOrNot = Gg ? Icon(Icons.remove_red_eye) : Icon(Icons.visibility_off);
+    update();
+  }
+  void isSecure1() {
+    Gg1 = !Gg1;
+    secureOrNot1 = Gg1 ? Icon(Icons.remove_red_eye) : Icon(Icons.visibility_off);
     update();
   }
 

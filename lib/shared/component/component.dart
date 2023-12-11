@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:gg/shared/styles/colors.dart';
+import 'package:hexcolor/hexcolor.dart';
 Widget DefaultIconButton(
         {required void Function() function,
         required String label,
@@ -7,8 +9,7 @@ Widget DefaultIconButton(
     Container(
       decoration: BoxDecoration(
           gradient:
-              LinearGradient(colors: [Colors.blueAccent,Colors.blue,Colors.indigoAccent],),
-          color: Colors.blue,
+          LinearGradient(colors: [Color.fromARGB( 150,51, 102, 204) , Color.fromARGB(255, 51, 102, 204),]),
           borderRadius: BorderRadius.circular(10)),
       width: double.infinity,
       height: 50,
@@ -37,7 +38,7 @@ Widget DefaultButton(
         {required void Function() function, required String label, context}) =>
     Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [Colors.blueAccent,Colors.blue,Colors.indigoAccent]),
+        gradient: LinearGradient(colors: [Color.fromARGB( 150,51, 102, 204) , Color.fromARGB(255, 51, 102, 204),]),
         borderRadius: BorderRadiusDirectional.circular(10),
       ),
       height: 50,
@@ -50,7 +51,9 @@ Widget DefaultButton(
             alignment: AlignmentDirectional.center,
             child: Text(
               "$label",
-              style: Theme.of(context).textTheme.labelLarge,
+              style: TextStyle(
+                color: Colors.white
+              ),
             )),
       ),
     );

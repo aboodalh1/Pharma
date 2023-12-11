@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:gg/Controller/HomeController.dart';
 import 'package:gg/View/RegisterScreen.dart';
 import 'package:gg/shared/component/component.dart';
+import 'package:gg/shared/styles/colors.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class LoginScreen extends StatelessWidget {
   var userController = TextEditingController();
@@ -29,13 +31,15 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: 90,
                   ),
-                  GradientText(
+                  Text(
                     "Log in to your account",
                     style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Poppins',
+                      fontSize: 25,
+                      fontWeight: FontWeight.w600,
+                      color: defaultColor,
                     ),
-                    colors: [Colors.blueAccent,Colors.blue,Colors.indigoAccent],
+
                   ),
                   SizedBox(
                     height: 30,
@@ -96,7 +100,7 @@ class LoginScreen extends StatelessWidget {
                               password: passwordController.text);
                         }
                       },
-                      label: 'LOGIN',
+                      label: 'Log in',
                       context: context),
                   SizedBox(
                     height: 20,
@@ -113,11 +117,22 @@ class LoginScreen extends StatelessWidget {
                     side: BorderSide(),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Spacer(),
+                      Text("Don't have account?",
+                      style: TextStyle(
+                        color: defaultColor,
+                        fontFamily: "Poppins",
+                        fontSize: 18,
+                      ),),
                       TextButton(
-                        child: Text("Don't have account?",
-                            style: Theme.of(context).textTheme.bodyLarge),
+                        child: Text("Sign Up",
+                            style: TextStyle(
+                              fontFamily: "Poppins",
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: defaultColor,
+                            )),
                         onPressed: () {
                           Get.to(RegisterScreen());
                         },

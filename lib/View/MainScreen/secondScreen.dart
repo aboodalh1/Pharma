@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:gg/View/MainScreen/LoginScreen.dart';
 import '../../shared/component/component.dart';
 import '../../shared/constant.dart';
+import '../../shared/locale/localController.dart';
 import '../cartScreen/CartScreen.dart';
 import '../categoriesScreen/catScreen.dart';
 import '../favoriteScreen/FavoriteScreen.dart';
@@ -20,9 +21,9 @@ class SecondPage extends StatelessWidget {
   ];
   List <String> navBarName =
       [
-        "Home",
-        "Categories",
-        "Settings"
+        "1".tr,
+        "2".tr,
+        "3".tr
       ];
 
   @override
@@ -117,11 +118,11 @@ class SecondPage extends StatelessWidget {
                   controller.changeNavBar(index);
                 },
                 items: [
-                  BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                  BottomNavigationBarItem(icon: Icon(Icons.home), label: "1".tr),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.category), label: 'Categories'),
+                      icon: Icon(Icons.category), label: "2".tr),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.settings), label: 'Settings'),
+                      icon: Icon(Icons.settings), label: "3".tr),
                 ]
             ),
 

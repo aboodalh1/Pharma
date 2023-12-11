@@ -3,6 +3,8 @@ import 'package:gg/Network/Dio/dioHelper.dart';
 import 'package:get/get.dart';
 import 'package:gg/View/MainScreen/secondScreen.dart';
 import 'package:gg/shared/constant.dart';
+import 'package:gg/shared/locale/localController.dart';
+import 'package:gg/shared/locale/locale.dart';
 import 'package:gg/shared/styles/Styles.dart';
 import 'Network/Local/cacheHelper.dart';
 import 'View/MainScreen/LoginScreen.dart';
@@ -34,11 +36,14 @@ class MyApp extends StatelessWidget {
   MyApp({super.key, this.startWidget});
   @override
   Widget build(BuildContext context) {
+    Get.put(LocalController());
     return GetMaterialApp(
       darkTheme: darkTheme,
       theme: lightTheme,
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      locale: Get.deviceLocale,
+      translations: MyLocale(),
+      home: SecondPage(),
     );
   }
 }

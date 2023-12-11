@@ -12,7 +12,7 @@ class LanguageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Choose a Language!',),
+        title: Text("6".tr,),
       ),
       body: Column(
         children: <Widget>[

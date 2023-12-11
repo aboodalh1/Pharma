@@ -15,4 +15,7 @@ class SettingController extends GetxController{
       showToast(text: 'Something went wrong', state: ToastStates.ERROR);
     });
   }
+  void updateUSerInfo(){
+    DioHelper.postData(url: 'update', data: {});
+  }
   }

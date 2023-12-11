@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:gg/Controller/HomeController.dart';
+import 'package:gg/View/MainScreen/LoginScreen.dart';
 import 'package:gg/View/MainScreen/secondScreen.dart';
 import 'package:gg/shared/component/component.dart';
+import 'package:gg/shared/styles/colors.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class RegisterScreen extends StatelessWidget {
   var phoneController = TextEditingController();
   var nameController = TextEditingController();
   var passwordController = TextEditingController();
+  var ConfirmpasswordController = TextEditingController();
   var formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -27,13 +30,14 @@ class RegisterScreen extends StatelessWidget {
                 SizedBox(
                   height: 90,
                 ),
-                GradientText(
-                  "Enter your information",
+                Text(
+                  "Sign Up your account",
                   style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
+                    fontFamily: "Poppins",
+                    color: defaultColor,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w600,
                   ),
-                  colors: [Colors.blueAccent,Colors.blue,Colors.indigoAccent],
                 ),
                 SizedBox(height: 20,),
                 Row(
@@ -110,25 +114,63 @@ class RegisterScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20,),
-
+                Text("Confirm your password",
+                    style: Theme.of(context).textTheme.labelLarge),
+                SizedBox(
+                  height: 15,
+                ),
+                TextFormField(
+                  validator: (value){
+                    if(value!.isEmpty){
+                      return 'Password must\'t be empty';
+                    }
+                    else return null;
+                  },
+                  controller: ConfirmpasswordController,
+                  obscureText: controller.Gg1,
+                  decoration: InputDecoration(
+                    suffixIcon: MaterialButton(
+                        onPressed: () {
+                          controller.isSecure1();},
+                        child: controller.secureOrNot1),
+                    labelText: 'Confirm your password',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                  ),
+                ),
+                SizedBox(height: 30,),
                 DefaultButton(function: (){
                     controller.registerState(
                       name: nameController.text,
                       password: passwordController.text,
                       phone: phoneController.text,
                     );
-
-
                 },
                     label: 'Register',
                     context: context),
                 SizedBox(
                   height: 20,
                 ),
-                Text(
-                  "Saidaly ya Saidaly ya Saidalyyyyyy Baddy Dawa for her and for me! ",
-                  style: Theme.of(context).textTheme.bodySmall,
-                  textAlign: TextAlign.center,
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Already have an account?",
+                      style: TextStyle(
+                          fontFamily: "Poppins",
+                          color: defaultColor),),
+                    TextButton(
+                       child: Text('Log In',
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                          color: defaultColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700
+                        ),
+                       ),
+                      onPressed:(){Get.to(LoginScreen());} ,
+                    ),
+                  ],
                 )
               ],
             ),

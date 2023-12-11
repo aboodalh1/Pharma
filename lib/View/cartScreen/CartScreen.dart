@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
@@ -11,7 +11,7 @@ class CartScreen extends StatelessWidget {
           children: [
             Icon(Icons.shopping_cart_rounded),
             SizedBox(width: 10,),
-            Text('My Cart'),
+            Text("4".tr),
           ],
         ),
       ),
