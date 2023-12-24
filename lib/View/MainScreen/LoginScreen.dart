@@ -5,13 +5,11 @@ import 'package:gg/Controller/HomeController.dart';
 import 'package:gg/View/RegisterScreen.dart';
 import 'package:gg/shared/component/component.dart';
 import 'package:gg/shared/styles/colors.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class LoginScreen extends StatelessWidget {
   var userController = TextEditingController();
   var passwordController = TextEditingController();
-  var formKey=GlobalKey<FormState>();
+  var formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class LoginScreen extends StatelessWidget {
           child: Form(
             key: formKey,
             child: Container(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,83 +30,65 @@ class LoginScreen extends StatelessWidget {
                     height: 90,
                   ),
                   Text(
-                    "Log in to your account",
+                    "20".tr,
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 25,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                       color: defaultColor,
                     ),
-
                   ),
                   SizedBox(
                     height: 30,
                   ),
-                  Text("Number", style: Theme.of(context).textTheme.labelLarge),
+                  Text("21".tr, style: Theme.of(context).textTheme.labelLarge),
                   SizedBox(
                     height: 15,
                   ),
-                  TextFormField(
+                  DefaultShadowFormField(
                     validator: (value){
-                      if(value!.isEmpty){
-                    return 'Email must\'t be empty';
+                      if(!userController.text.isNum){
+
+                        return "Enter you Number above";
                       }
-                      else return null;
                     },
-                    controller: userController,
-                    decoration: InputDecoration(
-                      labelText: "Number",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                    ),
-                  ),
+                      hintText: '+963******'
+                      , controller: userController),
                   SizedBox(
                     height: 20,
                   ),
-                  Text("Password", style: Theme.of(context).textTheme.labelLarge),
+                  Text("22".tr,
+                      style: Theme.of(context).textTheme.labelLarge),
                   SizedBox(
                     height: 15,
                   ),
-                  TextFormField(
-                    validator: (value){
-                      if(value!.isEmpty){
-                        return 'Password must\'t be empty';
-                      }
-                      else return null;
-                    },
-                    controller: passwordController,
-                    obscureText: controller.Gg,
-                    decoration: InputDecoration(
-                      suffixIcon: MaterialButton(
-                          onPressed: () {
-                            controller.isSecure();
-                          },
-                          child: controller.secureOrNot),
-                      labelText: "Password",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                    ),
-                  ),
+                  DefaultShadowFormField(
+                      validator: (value){},
+                      hintText: '+963******', controller: passwordController),
                   SizedBox(
                     height: 40,
                   ),
                   DefaultButton(
                       function: () {
-                        if(formKey.currentState!.validate()){
+                        if (formKey.currentState!.validate()) {
                           controller.loginState(
                               phone: userController.text,
                               password: passwordController.text);
                         }
                       },
-                      label: 'Log in',
+                      label: '25'.tr,
                       context: context),
                   SizedBox(
                     height: 20,
                   ),
                   CheckboxListTile(
                     title: Text(
-                      "Remember me",
-                      style: Theme.of(context).textTheme.labelMedium,
+                      "23".tr,
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey
+                      ),
                     ),
                     value: controller.checkBox,
                     onChanged: (value) {
@@ -116,17 +96,24 @@ class LoginScreen extends StatelessWidget {
                     },
                     side: BorderSide(),
                   ),
+                  Text(
+                    "24".tr,
+                    style: Theme.of(context).textTheme.bodySmall,
+                    textAlign: TextAlign.center,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Don't have account?",
-                      style: TextStyle(
-                        color: defaultColor,
-                        fontFamily: "Poppins",
-                        fontSize: 18,
-                      ),),
+                      Text(
+                        "26".tr,
+                        style: TextStyle(
+                          color: defaultColor,
+                          fontFamily: "Poppins",
+                          fontSize: 18,
+                        ),
+                      ),
                       TextButton(
-                        child: Text("Sign Up",
+                        child: Text("27".tr,
                             style: TextStyle(
                               fontFamily: "Poppins",
                               fontSize: 18,
@@ -139,11 +126,6 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Text(
-                    "Saidaly ya Saidaly ya Saidalyyyyyy Baddy Dawa for her and for me! ",
-                    style: Theme.of(context).textTheme.bodySmall,
-                    textAlign: TextAlign.center,
-                  )
                 ],
               ),
             ),

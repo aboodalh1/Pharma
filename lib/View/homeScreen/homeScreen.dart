@@ -12,6 +12,50 @@ class HomeScreen extends StatelessWidget {
       scrollDirection: Axis.vertical,
       child: Column(
         children: [
+          Container(
+            margin:  const EdgeInsets.all(36.5),
+            height: 42,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0xffa1c0e0),
+                  offset: Offset(0,0),
+                  blurRadius: 25,
+                )
+              ],
+            ),
+            child: Material(
+              borderRadius: BorderRadius.circular(12),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: TextFormField(
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(14),
+                        borderSide: BorderSide.none,
+                      ),
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 17.23,
+                          bottom: 22,
+                          right: 20,
+                        ),
+                        child: Icon(
+                          Icons.search,
+                          size: 35,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      hintText: '19'.tr,
+                    )),
+              ),
+            ),
+          ),
           CarouselSlider(
               items: const [
               Image(image: NetworkImage('https://as2.ftcdn.net/v2/jpg/01/18/42/59/1000_F_118425925_n2GZJR42P1ai0p3qYmNe375LCd6kQ9R4.jpg'),),
@@ -19,7 +63,7 @@ class HomeScreen extends StatelessWidget {
               // Image(image: NetworkImage('https://www.heart.org/-/media/Images/Health-Topics/Cardiac-Rehab/medicine-close-up.jpg'),),
               ],
               options:CarouselOptions(
-                height: 250,
+                height: 138,
                 autoPlay: true,
                 autoPlayAnimationDuration: (const Duration(seconds: 2)),
                 reverse: false,
@@ -45,128 +89,43 @@ class HomeScreen extends StatelessWidget {
 
   Widget productGridView(context) => GetBuilder<HomeController>(
     init: HomeController(),
-    builder: (HomeController controller)=>Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Stack(
-          alignment: AlignmentDirectional.bottomEnd,
-          children: [
-            Container(
-                width: double.infinity,
-                height: 190,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                  image: NetworkImage(
-                      'https://medlineplus.gov/images/Medicines.jpg'),
-                ))),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                color: Colors.red,
-                child: const Text(
-                  '25,000',
-                  style: TextStyle(fontSize: 10, color: Colors.white),
-                ),
-              ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.all(12.0),
+    builder: (HomeController controller)=>GestureDetector(
+      onTap: () {},
+      child: Container(
+        width: 150,
+        margin: EdgeInsets.all(16),
+        decoration:
+        BoxDecoration(borderRadius: BorderRadius.circular(13), boxShadow: [
+          BoxShadow(
+            color: Color(0xffa1c0e0),
+            offset: Offset(0, 0),
+            blurRadius: 20,
+          )
+        ]),
+        child: Material(
+          borderRadius: BorderRadius.circular(12),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Trade Name',
-                        textAlign: TextAlign.start,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                         style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                      const Text(
-                        'Medical Name',
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Text("Expire for 2002",
-                      style: Theme.of(context).textTheme.bodySmall,),
-                    ],
-                  ),
-                  const Spacer(),
-                  IconButton(
-                      onPressed: () {},
-                      icon: const CircleAvatar(
-                          backgroundColor: Colors.red,
-                          radius: 15,
-                          child: Icon(Icons.favorite_border,
-                              color: Colors.white, size: 16))),
-                ],
+              Image.asset(
+                'assets/images/ibn sina.png',
               ),
-              Row(
-                children: [
-                  const Text(
-                    'count',
-                    style: TextStyle(fontSize: 16, color: Colors.blue),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: () {
-                     showDialog(context: context, builder: (context)=>AlertDialog(
-                       title: const Text("what the quantity!"),
-                       content: Container(
-                         height: 50,
-                         width: 50,
-                         child: Row(
-                           mainAxisAlignment:MainAxisAlignment.center ,
-                           children: [
-                             IconButton(onPressed: (){
-                               controller.increaseCount();
-                             }, icon: const CircleAvatar(
-                                 backgroundColor: Colors.blueGrey,
-                                 radius: 15,
-                                 child: Icon(
-                                   Icons.add,
-                                   color: Colors.white,
-                                   size: 14,
-                                 )),),
-                             Text('${controller.count}'),
-                             IconButton(onPressed: (){
-                               controller.decreaseCount();
-                             }, icon: const CircleAvatar(
-                                 backgroundColor: Colors.blueGrey,
-                                 radius: 15,
-                                 child: Icon(
-                                   Icons.remove,
-                                   color: Colors.white,
-                                   size: 14,
-                                 )),),
-                           ],
-                         ),
-                       ),
-                     ));
-                    },
-                    icon: const CircleAvatar(
-                        backgroundColor: Colors.blueGrey,
-                        radius: 15,
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 14,
-                        )),
-                  )
-                ],
+              SizedBox(
+                height: 10,
               ),
+              Text(
+                'Ibn Sina',
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+              Text('Medication',
+              style: Theme.of(context).textTheme.bodySmall,),
+              Text('Damascus, Midan',
+              style: Theme.of(context).textTheme.bodySmall,),
             ],
           ),
         ),
-      ],
+      ),
     ),
   );
 }

@@ -3,10 +3,13 @@ import 'package:get/get.dart';
 import 'package:gg/Controller/HomeController.dart';
 import 'package:gg/View/MainScreen/LoginScreen.dart';
 import 'package:gg/shared/component/component.dart';
+import 'package:gg/shared/constant.dart';
 import 'package:gg/shared/styles/colors.dart';
 
+import '../../../Controller/SettingController/SettingController.dart';
 
-class RegisterScreen extends StatelessWidget {
+
+class EditProfile extends StatelessWidget {
   var phoneController = TextEditingController();
   var nameController = TextEditingController();
   var emailController = TextEditingController();
@@ -16,12 +19,16 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    phoneController.text = loginModel1!.user!.phone!;
+    nameController.text = loginModel1!.user!.name!;
+    emailController.text = loginModel1!.user!.email!;
+    phoneController.text = loginModel1!.user!.phone!;
     return Form(
       key: formKey,
       child: Scaffold(
-        body: GetBuilder<HomeController>(
-          init: HomeController(),
-          builder: (HomeController controller) => SingleChildScrollView(
+        body: GetBuilder<SettingController>(
+          init: SettingController(),
+          builder: (SettingController controller) => SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 45),
@@ -33,7 +40,7 @@ class RegisterScreen extends StatelessWidget {
                     height: 90,
                   ),
                   Text(
-                    "30".tr,
+                    "10".tr,
                     style: TextStyle(
                       fontFamily: "Poppins",
                       color: defaultColor,
@@ -61,25 +68,7 @@ class RegisterScreen extends StatelessWidget {
                         return "Enter your Username";
                       }
                     },
-                      hintText: '12'.tr, controller: nameController,
-                  height: 45,
-                  width: 293,
-
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text("14".tr, style: Theme.of(context).textTheme.labelLarge),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  DefaultShadowFormField(
-                    validator: (value){
-                      if(emailController.text.isEmpty){
-                        return "Enter your Email";
-                      }
-                    },
-                    hintText: '14'.tr, controller: emailController,
+                    hintText: '12'.tr, controller: nameController,
                     height: 45,
                     width: 293,
 
@@ -92,18 +81,36 @@ class RegisterScreen extends StatelessWidget {
                     height: 15,
                   ),
                   DefaultShadowFormField(
+                    validator: (value){
+                      if(emailController.text.isEmpty){
+                        return "Enter your Email";
+                      }
+                    },
+                    hintText: '+963******', controller: phoneController,
+                    height: 45,
+                    width: 293,
+
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text("14".tr, style: Theme.of(context).textTheme.labelLarge),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  DefaultShadowFormField(
                       validator: (value){
-                        if(!phoneController.text.isNum){
-                          return "Enter you Number above";
+                        if(emailController.text.isEmpty){
+                          return "Enter you email above";
                         }
                       },
-                      hintText: '+963******', controller: phoneController,
+                      hintText: '14'.tr, controller: emailController,
                       height: 45,
                       width: 293),
                   SizedBox(
                     height: 20,
                   ),
-                  Text("22".tr, style: Theme.of(context).textTheme.labelLarge),
+                  Text("15".tr, style: Theme.of(context).textTheme.labelLarge),
                   SizedBox(
                     height: 15,
                   ),
@@ -127,7 +134,7 @@ class RegisterScreen extends StatelessWidget {
                   DefaultShadowFormField(
                       validator: (value){
                         if(confirmPasswordController.text.isEmpty){
-                          return "Passwotd mustn \'t be empty";
+                          return "please enter your password to Confirm Edit";
                         }
                       },
                       hintText: '********',
@@ -140,47 +147,16 @@ class RegisterScreen extends StatelessWidget {
                   DefaultButton(
                       function: () {
                         if(formKey.currentState!.validate()){
-                        controller.registerState(
-                          name: nameController.text,
-                          email: emailController.text,
-                          phone: phoneController.text,
-                          password: passwordController.text,
-                          confirmPassword: confirmPasswordController.text
-                        );
+                          controller.updateUSerInfo(
+                            name: nameController.text,
+                            phone: phoneController.text,
+                            email: emailController.text,
+                            password: passwordController.text,
+                          );
+                          print(token);
                         }},
-                      label: '29'.tr,
+                      label: '17'.tr,
                       context: context),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          "28".tr,
-                          overflow: TextOverflow.ellipsis,
-                          softWrap: true,
-                          maxLines: 3,
-                          style:
-                              TextStyle(fontFamily: "Poppins", color: defaultColor),
-                        ),
-                      ),
-                      TextButton(
-                        child: Text(
-                          '25'.tr,
-                          style: TextStyle(
-                              fontFamily: "Poppins",
-                              color: defaultColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700),
-                        ),
-                        onPressed: () {
-                          Get.to(LoginScreen());
-                        },
-                      ),
-                    ],
-                  )
                 ],
               ),
             ),

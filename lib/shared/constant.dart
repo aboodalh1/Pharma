@@ -1,5 +1,11 @@
+import 'package:gg/model/catModel.dart';
+
+import '../model/Productssss.dart';
+import '../model/favoriteModel.dart';
 import '../model/loginModel.dart';
 
 String ? token='';
-String ? uId='';
-LoginModel ? loginModel1 = null;
+LoginModel ? loginModel1 = LoginModel();
+CatModel ? catModel =null;
+Productssss ? productModel1 = null;
+FavoriteModel ? favoriteModel = null;

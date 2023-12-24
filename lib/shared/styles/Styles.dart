@@ -83,7 +83,7 @@ ThemeData lightTheme= ThemeData(
     ),
       labelMedium: TextStyle(
         fontFamily: 'Poppins',
-        color: Colors.black,
+        color: defaultColor,
       fontSize: 16,
 
     ),

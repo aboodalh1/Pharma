@@ -7,13 +7,11 @@ class DarkModeRadioController extends GetxController {
 
   void selectOn() {
     selectedValue.value = 'On';
-
     update();
   }
 
   void selectOff() {
     selectedValue.value = 'Off';
-
    update();
   }
 }

@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:gg/Controller/HomeController.dart';
 import 'package:get/get.dart';
+import 'package:gg/Network/Local/cacheHelper.dart';
 import 'package:gg/View/MainScreen/LoginScreen.dart';
+import 'package:gg/View/categoriesScreen/catProducts.dart';
+import 'package:gg/View/categoriesScreen/catagories.dart';
+import 'package:gg/View/homeScreen/CompaniesScreen.dart';
 import '../../shared/component/component.dart';
 import '../../shared/constant.dart';
-import '../../shared/locale/localController.dart';
 import '../cartScreen/CartScreen.dart';
-import '../categoriesScreen/catScreen.dart';
-import '../favoriteScreen/FavoriteScreen.dart';
-import '../homeScreen/homeScreen.dart';
-import '../settingScreen/Main/settingSreen.dart';
+import '../products/Porducts.dart';
+import '../settingScreen/profile/profile.dart';
 
 class SecondPage extends StatelessWidget {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   List <Widget> navBarScreen =
   [
     HomeScreen(),
-    CatScreen(),
-    SettingScreen(),
+    CatProducts(),
+    ProfilePage(),
   ];
   List <String> navBarName =
       [
@@ -32,14 +33,7 @@ class SecondPage extends StatelessWidget {
       init: HomeController(),
       builder: (controller)=>Scaffold(
         key: scaffoldKey,
-        appBar: AppBar(
-          title: Text(navBarName[controller.navBarIndex]),
-          actions: [
-        IconButton(onPressed: (){Get.to(FavoriteScreen());}, icon: Icon(Icons.favorite_border)),
-    IconButton(onPressed: (){Get.to(CartScreen());}, icon: Icon(Icons.shopping_cart_rounded)),
-              SizedBox(width: 4,)
-          ],
-        ),
+
         body: navBarScreen[controller.navBarIndex],
         drawer: Drawer(
           child: Container(
@@ -97,6 +91,7 @@ class SecondPage extends StatelessWidget {
                     function: (){
                       Get.off(LoginScreen());
                       token = '';
+                      CacheHelper.saveData(key: 'token', value: '');
                       showToast(text: 'You Logged out Successfully', state: ToastStates.SUCCESS);
                     },
                     label: "LogOut",
@@ -113,6 +108,7 @@ class SecondPage extends StatelessWidget {
         ),
         bottomNavigationBar:
         BottomNavigationBar(
+
               currentIndex: controller.navBarIndex,
                 onTap: (index) {
                   controller.changeNavBar(index);

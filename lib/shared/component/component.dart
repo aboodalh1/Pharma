@@ -41,9 +41,9 @@ Widget DefaultButton(
         gradient: LinearGradient(colors: [Color.fromARGB( 150,51, 102, 204) , Color.fromARGB(255, 51, 102, 204),]),
         borderRadius: BorderRadiusDirectional.circular(10),
       ),
-      height: 50,
+      height: 47,
       alignment: AlignmentDirectional.center,
-      width: double.infinity,
+      width: 300,
       child: MaterialButton(
         onPressed: function,
         child: Container(
@@ -70,8 +70,39 @@ void showToast({
     textColor: Colors.white,
     fontSize: 16.0
 );
-enum ToastStates { SUCCESS, ERROR, WARNING }
+Widget DefaultShadowFormField(
+    {
+  required String hintText,
+  required TextEditingController controller,
+      required dynamic validator,
+      Icon ? icon,
+      double width = 300,
+      double height = 50,
+      bool isIcon = false,
+    }
 
+)=> TextFormField(
+  validator: validator,
+    controller: controller ,
+    decoration: InputDecoration(
+      filled: true,
+      fillColor: Colors.white,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      prefixIcon: isIcon ? Padding(
+        padding: const EdgeInsets.only(
+          left: 17.23,
+          bottom: 22,
+          right: 20,
+        ),
+        child: icon,
+      ) : null,
+      hintText: hintText,
+    ));
+
+
+enum ToastStates { SUCCESS, ERROR, WARNING }
 Color chooseToastColor({required ToastStates state}) {
   Color color;
   switch (state) {

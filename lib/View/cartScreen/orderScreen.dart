@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:gg/shared/constant.dart';
-
 import '../../Controller/HomeController.dart';
 import '../../model/productModel.dart';
-class FavoriteScreen extends StatefulWidget {
-  const FavoriteScreen({super.key});
-
+import '../../shared/constant.dart';
+import 'package:get/get.dart';
+class OrderScreen extends StatefulWidget {
   @override
-  State<FavoriteScreen> createState() => _FavoriteScreenState();
+  State<OrderScreen> createState() => _OrderScreenState();
 }
 
-class _FavoriteScreenState extends State<FavoriteScreen> {
+class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("5".tr),
+        title: Text('Order ID: 159GF'),
       ),
-      body:  ListView.builder(
-        itemCount: favoriteModel!.myfavorite!.length,
+      body: ListView.builder(
+        itemCount: productModel1!.post!.length,
         itemBuilder: (BuildContext context, index) {
           return GetBuilder<HomeController>(
             init: HomeController(),
@@ -47,19 +44,23 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                         children: [
                           Row(
                             children: [
-                              Text('${favoriteModel!.myfavorite?[index].depots!.medicine!.scientificName}', style: TextStyle(fontSize: 12, fontFamily: 'Poppins')),
+                              Text('${productModel1!.post?[index]!.medicine!.scientificName}', style: TextStyle(fontSize: 12, fontFamily: 'Poppins')),
                               IconButton(
                                 icon: list[index].isFavorite? Icon(Icons.favorite) : Icon(Icons.favorite_border),
                                 onPressed: () {
+                                  setState(() {
+                                    list[index].isFavorite = !list[index].isFavorite;
+                                  });
+                                  print(token);
+                                  controller.addToFavorite(id: productModel1!.post![index].id!.toInt());
                                   controller.changeFavorite();
-
                                 },
                               ),
                             ],
                           ),
-                          Text('${favoriteModel!.myfavorite?[index].depots!.medicine!.company}', style: TextStyle(fontSize: 12, fontFamily: 'Poppins')),
+                          Text('${productModel1!.post?[index]!.medicine!.company}', style: TextStyle(fontSize: 12, fontFamily: 'Poppins')),
                           SizedBox(height:11,),
-                          Text('${favoriteModel!.myfavorite?[index].depots!.medicine!.tradeName}', style: TextStyle(fontSize: 12, fontFamily: 'Poppins')),
+                          Text('${productModel1!.post?[index]!.dateOfEnd}', style: TextStyle(fontSize: 12, fontFamily: 'Poppins')),
                           Row(
                             children: [
                               Text("${productModel1!.post?[index]!.price} S.P",style:TextStyle(color: Colors.blue,fontSize: 15) ,),
